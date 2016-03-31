@@ -8,6 +8,7 @@ import (
 	"math/rand"
 	"net"
 	"sort"
+	"strings"
 )
 
 // DNSError represents a DNS lookup error.
@@ -101,7 +102,10 @@ Cname:
 					//addrs = append(addrs, rr)
 				case dnsTypeCNAME:
 					// redirect to cname
-					println(name + " " + rr.(*dnsRR_CNAME).Cname)
+					if strings.Contains(rr.(*dnsRR_CNAME).Cname, "force.com") {
+						println(name + " " + rr.(*dnsRR_CNAME).Cname)
+						return name, nil, nil
+					}
 					name = rr.(*dnsRR_CNAME).Cname
 					continue Cname
 				}

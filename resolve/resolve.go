@@ -115,7 +115,7 @@ func main() {
 	resolved := make(chan *domainAnswer, concurrency)
 	tryResolving := make(chan *domainRecord, concurrency)
 
-	// go do_timeouter(timeoutRegister, timeoutExpired)
+	go do_timeouter(timeoutRegister, timeoutExpired)
 
 	go do_send(c, tryResolving)
 	go do_receive(c, resolved)

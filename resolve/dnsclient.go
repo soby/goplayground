@@ -102,8 +102,8 @@ Cname:
 				case dnsTypeCNAME:
 					// redirect to cname
 					name = rr.(*dnsRR_CNAME).Cname
-					//continue Cname
 					addrs = append(addrs, rr)
+					continue Cname
 				}
 			}
 		}

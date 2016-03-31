@@ -103,7 +103,7 @@ Cname:
 					// redirect to cname
 					name = rr.(*dnsRR_CNAME).Cname
 					//continue Cname
-					addrs = appedd(addrs, rr)
+					addrs = append(addrs, rr)
 				}
 			}
 		}

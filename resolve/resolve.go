@@ -217,7 +217,7 @@ func do_map_guard(domains <-chan string,
 				sort.Sort(sort.StringSlice(s))
 
 				// without trailing dot
-				domain := dr.domain[:len(dr.domain)-1]
+				//domain := dr.domain[:len(dr.domain)-1]
 				//fmt.Printf("%s, %s\n", domain, strings.Join(s, " "))
 
 				sumTries += dr.resend

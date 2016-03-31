@@ -101,7 +101,7 @@ Cname:
 					//addrs = append(addrs, rr)
 				case dnsTypeCNAME:
 					// redirect to cname
-					println(name + " " + Cname)
+					println(name + " " + rr.(*dnsRR_CNAME).Cname)
 					name = rr.(*dnsRR_CNAME).Cname
 					continue Cname
 				}

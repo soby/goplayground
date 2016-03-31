@@ -32,7 +32,7 @@ func do_read_domains(domains chan<- string, domainSlotAvailable <-chan bool) {
 			continue
 		}
 
-		domain := input + "."
+		domain := "support." + input + "."
 
 		domains <- domain
 	}

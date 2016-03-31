@@ -98,11 +98,12 @@ Cname:
 			if h.Class == dnsClassINET && h.Name == name {
 				switch h.Rrtype {
 				case qtype:
-					addrs = append(addrs, rr)
+					//addrs = append(addrs, rr)
 				case dnsTypeCNAME:
 					// redirect to cname
 					name = rr.(*dnsRR_CNAME).Cname
-					continue Cname
+					//continue Cname
+					addrs = appedd(addrs, rr)
 				}
 			}
 		}

@@ -102,7 +102,6 @@ Cname:
 					//addrs = append(addrs, rr)
 				case dnsTypeCNAME:
 					// redirect to cname
-					newCname string
 					newCname = rr.(*dnsRR_CNAME).Cname
 					if strings.Contains(newCname, "force.com") {
 						println(name[:len(name)-1] + " " + newCname[:len(newCname)-1])

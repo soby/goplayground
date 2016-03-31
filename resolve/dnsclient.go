@@ -84,7 +84,7 @@ func answer(name, server string, dns *dnsMsg, qtype uint16) (cname string, addrs
 	// /etc/resolv.conf are recursive resolvers.
 	// We asked for recursion, so it should have included
 	// all the answers we need in this one packet.
-Cname:
+//Cname:
 	for cnameloop := 0; cnameloop < 10; cnameloop++ {
 		addrs = addrs[0:0]
 		for _, rr := range dns.answer {
@@ -108,7 +108,7 @@ Cname:
 						return name, nil, nil
 					}
 					name = newCname
-					continue Cname
+					//continue Cname
 				}
 			}
 		}

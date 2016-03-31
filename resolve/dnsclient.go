@@ -100,6 +100,7 @@ func answer(name, server string, dns *dnsMsg, qtype uint16) (cname string, addrs
 				switch h.Rrtype {
 				case qtype:
 					//addrs = append(addrs, rr)
+					return name, nil, nil
 				case dnsTypeCNAME:
 					// redirect to cname
 					newCname := rr.(*dnsRR_CNAME).Cname

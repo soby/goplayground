@@ -67,7 +67,7 @@ func reverseaddr(addr string) (arpa string, err error) {
 // On return, if err == nil, addrs != nil.
 func answer(name, server string, dns *dnsMsg, qtype uint16) (cname string, addrs []dnsRR, err error) {
 	addrs = make([]dnsRR, 0, len(dns.answer))
-
+	orig := name
 	if dns.rcode == dnsRcodeNameError && dns.recursion_available {
 		return "", nil, &DNSError{Err: noSuchHost, Name: name}
 	}
@@ -84,7 +84,7 @@ func answer(name, server string, dns *dnsMsg, qtype uint16) (cname string, addrs
 	// /etc/resolv.conf are recursive resolvers.
 	// We asked for recursion, so it should have included
 	// all the answers we need in this one packet.
-//Cname:
+Cname:
 	for cnameloop := 0; cnameloop < 10; cnameloop++ {
 		addrs = addrs[0:0]
 		for _, rr := range dns.answer {
@@ -105,11 +105,11 @@ func answer(name, server string, dns *dnsMsg, qtype uint16) (cname string, addrs
 					// redirect to cname
 					newCname := rr.(*dnsRR_CNAME).Cname
 					if strings.Contains(newCname, "force.com") {
-						println(name[:len(name)-1] + " " + newCname[:len(newCname)-1])
+						println(orig + " "+ name[:len(name)-1] + " " + newCname[:len(newCname)-1])
 						return name, nil, nil
 					}
 					name = newCname
-					//continue Cname
+					continue Cname
 				}
 			}
 		}

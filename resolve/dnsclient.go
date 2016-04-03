@@ -99,13 +99,13 @@ Cname:
 			if h.Class == dnsClassINET && h.Name == name {
 				switch h.Rrtype {
 				case qtype:
-					//addrs = append(addrs, rr)
-					return name, nil, nil
+					addrs = append(addrs, rr)
+					//return name, nil, nil
 				case dnsTypeCNAME:
 					// redirect to cname
 					newCname := rr.(*dnsRR_CNAME).Cname
 					if strings.Contains(newCname, "force.com") {
-						println(orig + " "+ name[:len(name)-1] + " " + newCname[:len(newCname)-1])
+						println(orig + " - "+ name[:len(name)-1] + " " + newCname[:len(newCname)-1])
 						return name, nil, nil
 					}
 					name = newCname
